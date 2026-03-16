@@ -1,4 +1,4 @@
-# CSCI 2951-O SAT Solver
+# SAT Solver
 
 A SAT solver implemented in Julia. Supports multiple solving strategies including DPLL and several CDCL variants which you can run in parallel. 
 
