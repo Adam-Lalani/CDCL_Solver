@@ -1,6 +1,6 @@
 # CSCI 2951-O SAT Solver
 
-A SAT solver implemented in Julia. Supports multiple solving strategies including DPLL and several CDCL variants.
+A SAT solver implemented in Julia. Supports multiple solving strategies including DPLL and several CDCL variants which you can run in parallel. 
 
 ## Project Structure
 
@@ -66,36 +66,11 @@ Results are written as JSON lines to `logFile`:
 {"Instance": "example.cnf", "Time": "0.42", "Result": "SAT"}
 ```
 
-### SLURM cluster (Oscar / Brown CCV)
-
-Submit a batch job on the `carney-tserre-condo` GPU partition:
-
-```bash
-sbatch runJob.sh
-```
-
-The job is configured for:
-- 2 GPUs, 4 CPU cores, 100 GB RAM, 24-hour wall time
-- Output logged to `job_mindy.out`
-- Solver selectable via the `SOLVER` variable in `runJob.sh`
-
-To change the solver, edit `runJob.sh`:
-
-```bash
-SOLVER="cdcl_vsids_luby"   # or dpll, cdcl_basic, cdcl_vsids, etc.
-```
 
 ## Requirements
 
 - [Julia](https://julialang.org/) (managed via `juliaup`)
-- CUDA + cuDNN (loaded via environment modules on the cluster)
-- Python virtual environment at `venv/` (activated in the job script)
 
-## Setup
-
-```bash
-# Activate the virtual environment
-source venv/bin/activate
 
 # Run a solver locally
 ./run.sh --solver dpll input/example.cnf
